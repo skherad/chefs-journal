@@ -5,6 +5,7 @@ const cors = require('cors')
 const PORT = process.env.PORT || 5050;
 const expressSession = require('express-session');
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
 
 require("./auth/passportGoogleSSO");
 
@@ -28,6 +29,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(fileUpload());
 
 const userRoutes = require('./routes/userRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
@@ -36,7 +38,7 @@ const ingredientRoutes = require('./routes/ingredientRoutes');
 const loginWithGoogleApi = require('./routes/auth')
 
 app.get('/', (_req, res) => {res.send("Welcome to my API");});
-app.use('/public', express.static('./public/images'))
+app.use('/public', express.static('./public/images'));
 
 app.use('/auth',loginWithGoogleApi);
 app.use('/user', userRoutes);

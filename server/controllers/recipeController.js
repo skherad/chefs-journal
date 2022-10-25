@@ -28,12 +28,14 @@ exports.user = (req, res) => {
 
 // get all recipes that are not saved or created by a specific user
 exports.explore = (req, res) => {
-  knex.select('recipes.id', 'recipes.title', 'recipes.category', 'recipes.photo')
+  knex.select('id', 'title', 'category', 'photo')
   .from('recipes')
-  .leftJoin('saves', 'recipes.id','saves.recipe_id')
-  .whereNot('saves.user_id', req.params.userId)
-  .orWhereNull('saves.user_id')
-  .andWhereNot('recipes.user_id', req.params.userId)
+  .whereNotIn('id', 
+    knex.select('recipe_id')
+    .from('saves')
+    .where('user_id', req.params.userId)
+  )
+  .andWhereNot('user_id', req.params.userId)
   .then((data)=>{
     res.status(200).json(data)
   })
@@ -87,12 +89,15 @@ exports.library = (req, res) => {
 }
 
 exports.newRecipe = (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
+  const {data} = req.file.foodpic;
+
   let newRecipe = {
     title: req.body.title,
     instructions: req.body.instructions,
     user_id: req.body.user_id,
-    category: req.body.category
+    category: req.body.category,
+    photo: data
   }
 
   knex('recipes').insert(newRecipe)
