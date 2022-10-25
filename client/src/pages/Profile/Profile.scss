@@ -1,7 +1,7 @@
 @use '../../styles/partials/variables' as *;
 
 .profile {
-    background: linear-gradient($primary-color-dark 10%, $primary-color-light 10% 90%);
+    background: linear-gradient(to top, $primary-color-light 92%, $primary-color-dark 92%);
     min-height:80vh;
     &__header {
         display: flex;
