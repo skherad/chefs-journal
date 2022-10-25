@@ -10,6 +10,6 @@ This is a full stack project presented as my capstone project at Brainstation. T
 <a href="https://oauth.net/2/" target="_blank" rel="noreferrer"> <img src="client/public/images/oauth.jpeg" alt="oauth" width="40" height="40"/> </a>
 </p>
 
-### GIF Demo
+### Demo
 ### Installation
 ### Lessons Learnt
