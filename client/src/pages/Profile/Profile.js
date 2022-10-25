@@ -101,8 +101,8 @@ const Profile = () => {
                 <div className="profile__stats-label">Recipes</div>
               </li>
               <li className="profile__stats-item">
-                <div className='profile__stats-num'>2</div>
-                <div className="profile__stats-label">Followers</div>
+                <div className='profile__stats-num'>{savedRecipes.length}</div>
+                <div className="profile__stats-label">Saves</div>
               </li>
               <li className="profile__stats-item">
                 <div className='profile__stats-num'>{friends.length}</div>
@@ -129,12 +129,12 @@ const Profile = () => {
         )
       ) : (
         // If user is not logged in, render a login button
-        <>
+        <section className='home'>
           <p>
             <strong>This page requires authentication.</strong>
           </p>
           <LoginButton />
-        </>
+        </section>
       )}
     </>
   )

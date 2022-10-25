@@ -131,12 +131,12 @@ const Explore = () => {
       </section>
       ):(
         // If user is not logged in, render a login button
-        <>
+        <section className="home">
           <p>
             <strong>This page requires authentication.</strong>
           </p>
           <LoginButton />
-        </>
+        </section>
       )}
     </>
   )

@@ -15,6 +15,7 @@ const SingleRecipe = () => {
   let navigate = useNavigate()
   let {recipeId, userId} = useParams();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // set avatar t pass down to comment section
   const [myAvatar, setMyAvatar] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState([]);
   const [recipeIngredients, setRecipeIngredients] = useState([]);
@@ -66,6 +67,13 @@ const SingleRecipe = () => {
     .catch(err => console.log(err))
   }
 
+  const unsaveHandler = (e) => {
+    e.preventDefault();
+    axios.delete(`${SERVER_URL}/recipe/singleRecipe/${recipeId}`, { withCredentials: true })
+    .then(res => setSaved(false))
+    .catch(err => console.log(err))
+  }
+
   const deleteHandler = (e) => {
     e.preventDefault();
     axios.delete(`${SERVER_URL}/recipe/singleRecipe/${recipeId}`, { withCredentials: true })
@@ -79,7 +87,10 @@ const SingleRecipe = () => {
         <section className='single-recipe'>
           <div  className='single-recipe__photo' style={{backgroundImage: `url(${selectedRecipe[0]?.photo})`}}></div>
           {!library?.includes(Number(recipeId))&&<button onClick={saveHandler}  className={!saved ? "single-recipe__save-button" :"single-recipe__save-button--disabled"}>SAVE</button>}
-          {library?.includes(Number(recipeId))&&<button onClick={deleteHandler} className="single-recipe__delete-button">DELETE</button>}
+          {selectedRecipe[0].user_id==userId?
+            <button onClick={deleteHandler} className="single-recipe__delete-button">DELETE</button>
+            :
+            null}
           {saved&&<button className="single-recipe__save-button single-recipe__save-button--done">SAVED✔️</button>}
           <h2 className='single-recipe__header'>{selectedRecipe[0]?.title}</h2>
 
