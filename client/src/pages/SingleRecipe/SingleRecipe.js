@@ -87,7 +87,7 @@ const SingleRecipe = () => {
         <section className='single-recipe'>
           <div  className='single-recipe__photo' style={{backgroundImage: `url(${selectedRecipe[0]?.photo})`}}></div>
           {!library?.includes(Number(recipeId))&&<button onClick={saveHandler}  className={!saved ? "single-recipe__save-button" :"single-recipe__save-button--disabled"}>SAVE</button>}
-          {selectedRecipe[0].user_id==userId?
+          {selectedRecipe[0]?.user_id==userId?
             <button onClick={deleteHandler} className="single-recipe__delete-button">DELETE</button>
             :
             null}
@@ -106,7 +106,7 @@ const SingleRecipe = () => {
           <p className='single-recipe__title'>Instructions:</p>
           <ol className=' single-recipe__list single-recipe__list--instructions'>
             {selectedRecipe[0]?.instructions.split("-").map(step=>
-              <li className='single-recipe__item' key={uniqid()}>{step.substring(3)}</li>
+              <li className='single-recipe__item' key={uniqid()}>{step}</li>
             )}
           </ol>
           {/* link to writer's profile */}
