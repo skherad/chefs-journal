@@ -1,4 +1,4 @@
-<img src="client/public/images/Chefs_Journal.png"/>
+<img src="client/public/images/Chefs_Journal.png" width="100%vw"/>
 
 ## Basic Overview
 Chefs Journal is a web app, inspired by my pandemic hobby, where I created recipes and shared them on instagram. 
