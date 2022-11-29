@@ -10,7 +10,3 @@ View the deployed version here: <a href="https://chefsjournal.ca">chefsjournal.c
 <a href="https://www.passportjs.org/" target="_blank" rel="noreferrer"> <img src="client/public/images/passport.webp" alt="passportjs" width="40" height="40"/> </a>
 <a href="https://oauth.net/2/" target="_blank" rel="noreferrer"> <img src="client/public/images/oauth.jpeg" alt="oauth" width="40" height="40"/> </a>
 </p>
-
-### Demo
-### Installation
-### Lessons Learnt
